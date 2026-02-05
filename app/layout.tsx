@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import PageLoader from '@/components/PageLoader'
 
 // Using system fonts as fallback to avoid network issues during build
 const geistSans = {
@@ -55,7 +56,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <PageLoader>{children}</PageLoader>
       </body>
     </html>
   )
