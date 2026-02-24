@@ -11,6 +11,7 @@ export default function DoPage() {
       icon: '👤',
       color: 'blue',
       gradient: 'from-blue-600 to-indigo-500',
+      href: '/',
       see: [
         'Impact Tower with real-time stats',
         'Community Feed of active reports',
@@ -30,6 +31,7 @@ export default function DoPage() {
       icon: '🤝',
       color: 'indigo',
       gradient: 'from-indigo-600 to-purple-500',
+      href: '/ngo',
       see: [
         'Verified environmental data',
         'Volunteer network directory',
@@ -49,6 +51,7 @@ export default function DoPage() {
       icon: '🏛️',
       color: 'slate',
       gradient: 'from-slate-800 to-slate-900',
+      href: '/municipal',
       see: [
         'City Health Index indicators',
         'Report density & waste heatmaps',
@@ -68,6 +71,7 @@ export default function DoPage() {
       icon: '🛰️',
       color: 'red',
       gradient: 'from-red-600 to-orange-500',
+      href: '/admin',
       see: [
         'AI Predictive overflow mapping',
         'Cross-component platform stats',
@@ -154,9 +158,11 @@ export default function DoPage() {
               <div className="flex gap-1">
                 {[1, 2, 3].map(i => <div key={i} className="w-1 h-1 rounded-full bg-slate-200" />)}
               </div>
-              <button className="text-[10px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
-                Access Portal <span className="text-base">→</span>
-              </button>
+              <Link href={portal.href}>
+                <button className="text-[10px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all duration-300 cursor-pointer">
+                  Access Portal <span className="text-base">→</span>
+                </button>
+              </Link>
             </div>
           </motion.div>
         ))}
