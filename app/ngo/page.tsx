@@ -6,55 +6,32 @@ import Logo from '@/components/Logo'
 
 export default function NGODashboard() {
   return (
-    <div className="min-h-screen bg-emerald-50 flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-emerald-900 text-white hidden md:flex flex-col p-6 sticky top-0 h-screen">
-        <Link href="/" className="mb-12">
-          <Logo />
-        </Link>
-        <nav className="flex-1 space-y-4">
-          {['Dashboard', 'Marketplace', 'Pickup Requests', 'Impact Stats', 'Partners', 'Settings'].map((item) => (
-            <div key={item} className={`p-3 rounded-lg cursor-pointer transition-colors ${item === 'Dashboard' ? 'bg-emerald-600 text-white' : 'hover:bg-emerald-800 text-emerald-400'}`}>
-              {item}
-            </div>
-          ))}
-        </nav>
-        <div className="mt-auto pt-6 border-t border-emerald-800">
-          <p className="text-xs text-emerald-500 mb-2">Logged in as</p>
-          <p className="text-sm font-semibold">GreenTech Recyclers</p>
-        </div>
-      </aside>
+    <>
+      {/* NGO Header Info */}
+      <div className="mb-12">
+        <h1 className="text-5xl font-black text-indigo-950 tracking-tighter uppercase italic">Impact Tower ♻️</h1>
+        <p className="text-indigo-600 font-black uppercase tracking-[0.4em] text-[10px] mt-2">Connecting real-world waste collection to community impact</p>
+      </div>
 
-      {/* Main Content */}
-      <main className="flex-1 p-8">
-        <header className="flex justify-between items-center mb-12">
-          <div>
-            <h1 className="text-3xl font-bold text-emerald-900 text-center md:text-left">NGO & Recycler Portal ♻️</h1>
-            <p className="text-emerald-700">Connecting waste to wealth</p>
-          </div>
-          <div className="hidden md:flex items-center gap-4">
-            <div className="bg-white px-4 py-2 rounded-xl shadow-sm border border-emerald-100">
-              <p className="text-[10px] font-bold text-emerald-600 uppercase">Recycled this month</p>
-              <p className="text-xl font-bold text-slate-800">2.4 Tons 📦</p>
-            </div>
-          </div>
-        </header>
-
-        {/* Action Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-           <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-6 rounded-3xl text-white shadow-lg shadow-emerald-200 col-span-1 md:col-span-2">
-             <h2 className="text-2xl font-bold mb-2">New Pickup Requests Available 🚛</h2>
-             <p className="opacity-90 mb-6 font-medium">There are 12 new listings in Vijay Nagar area waiting for collection.</p>
-             <Link href="/marketplace" className="inline-block px-6 py-3 bg-white text-emerald-700 font-bold rounded-xl hover:bg-emerald-50 transition-colors">
-               Explore Marketplace
-             </Link>
+      {/* Action Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+         <div className="bg-gradient-to-br from-indigo-600 to-blue-700 p-12 rounded-[4rem] text-white shadow-2xl shadow-indigo-200 col-span-1 md:col-span-2 relative overflow-hidden group">
+           <div className="relative z-10">
+              <h2 className="text-4xl font-black mb-3">Priority Pickup Signals Available 🚛</h2>
+              <p className="opacity-80 mb-10 font-black uppercase tracking-widest text-[10px]">There are 12 high-priority listings in Sector 5 waiting for collection.</p>
+              <Link href="/marketplace" className="inline-block px-12 py-5 bg-white text-indigo-900 font-black rounded-2xl hover:shadow-2xl hover:scale-105 transition-all uppercase tracking-[0.2em] text-[10px]">
+                Explore Marketplace ❱
+              </Link>
            </div>
-           <div className="bg-white p-6 rounded-3xl shadow-sm border border-emerald-100 flex flex-col justify-center items-center text-center">
-              <span className="text-4xl mb-2">🌱</span>
-              <p className="text-emerald-800 font-bold text-2xl">450kg</p>
-              <p className="text-emerald-500 text-sm">Carbon Offset This Week</p>
-           </div>
-        </div>
+           <div className="absolute top-0 right-0 w-96 h-96 bg-white/20 rounded-full -mr-48 -mt-48 blur-3xl group-hover:scale-150 transition-transform duration-1000"></div>
+         </div>
+         <div className="bg-white p-12 rounded-[4rem] shadow-xl border border-indigo-50 flex flex-col justify-center items-center text-center relative overflow-hidden group">
+            <div className="absolute inset-0 bg-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <span className="text-6xl mb-6 relative z-10 transition-transform group-hover:scale-110">🌱</span>
+            <p className="text-indigo-950 font-black text-5xl mt-2 relative z-10">450<span className="text-xl uppercase tracking-tighter">kg</span></p>
+            <p className="text-indigo-400 text-[10px] font-black uppercase tracking-widest mt-4 relative z-10">Carbon Offset This Week</p>
+         </div>
+      </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
            {/* Recyclables List */}
@@ -107,7 +84,6 @@ export default function NGODashboard() {
               </div>
            </div>
         </div>
-      </main>
-    </div>
+    </>
   )
 }

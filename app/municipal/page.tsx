@@ -13,39 +13,12 @@ export default function MunicipalDashboard() {
   ]
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-slate-900 text-white hidden md:flex flex-col p-6 sticky top-0 h-screen">
-        <Link href="/" className="mb-12">
-          <Logo />
-        </Link>
-        <nav className="flex-1 space-y-4">
-          {['Overview', 'Heatmap', 'Complaints', 'Cleanup Routes', 'Analytics', 'Settings'].map((item) => (
-            <div key={item} className={`p-3 rounded-lg cursor-pointer transition-colors ${item === 'Overview' ? 'bg-blue-600 text-white' : 'hover:bg-slate-800 text-slate-400'}`}>
-              {item}
-            </div>
-          ))}
-        </nav>
-        <div className="mt-auto pt-6 border-t border-slate-800">
-          <p className="text-xs text-slate-500 mb-2">Logged in as</p>
-          <p className="text-sm font-semibold">Indore Municipality Admin</p>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1 p-8">
-        <header className="flex justify-between items-center mb-12">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900">Municipal Command Center 🏛️</h1>
-            <p className="text-slate-500">Real-time city cleanliness monitoring</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <button className="p-2 bg-white rounded-full shadow-sm border border-slate-200 relative">
-              🔔 <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
-            <div className="h-10 w-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">IM</div>
-          </div>
-        </header>
+    <>
+      {/* Header Info (Previously in sidebar) */}
+      <div className="mb-12">
+        <h1 className="text-4xl font-black text-slate-900 tracking-tighter">Municipal Dashboard 🏛️</h1>
+        <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] mt-2">Real-time city cleanliness monitoring</p>
+      </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
@@ -165,7 +138,6 @@ export default function MunicipalDashboard() {
             </table>
           </div>
         </div>
-      </main>
-    </div>
+    </>
   )
 }

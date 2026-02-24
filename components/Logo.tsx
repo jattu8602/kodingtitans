@@ -11,7 +11,7 @@ interface LogoProps {
 export default function Logo({ className = '', full = false, size = 40 }: LogoProps) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <div className="relative" style={{ width: size, height: size }}>
+      <div className="relative group transition-transform duration-500 hover:scale-110" style={{ width: size, height: size }}>
         <Image
           src="/logo.png"
           alt="TitanClean"
@@ -20,22 +20,19 @@ export default function Logo({ className = '', full = false, size = 40 }: LogoPr
           priority
         />
       </div>
-      <div className="flex flex-col justify-center">
-        <div className="flex items-center text-2xl font-black leading-none tracking-tight">
-          <span className="text-[#0f4c81]">Titan</span>
-          <span className="text-[#1a9245]">Clean</span>
-        </div>
-        {full && (
-          <div className="mt-0.5">
-            <p className="text-[9px] text-slate-500 font-bold leading-none tracking-tighter uppercase whitespace-nowrap">
-              Guardians of City Cleanliness
-            </p>
-            <p className="text-[7px] text-slate-400 font-bold leading-none mt-0.5">
-              by Koding Titans
+      {(full) && (
+        <div className="flex flex-col justify-center">
+          <div className="flex items-center text-2xl font-black leading-none tracking-tighter italic">
+            <span className="text-slate-900">Titan</span>
+            <span className="text-indigo-600">Clean</span>
+          </div>
+          <div className="mt-1">
+            <p className="text-[10px] text-slate-400 font-black leading-none uppercase tracking-[0.3em]">
+              Guardians
             </p>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }
