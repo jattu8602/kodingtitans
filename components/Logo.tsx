@@ -20,19 +20,12 @@ export default function Logo({ className = '', full = false, size = 40 }: LogoPr
           priority
         />
       </div>
-      {(full) && (
-        <div className="flex flex-col justify-center">
-          <div className="flex items-center text-2xl font-black leading-none tracking-tighter italic">
-            <span className="text-slate-900">Titan</span>
-            <span className="text-indigo-600">Clean</span>
-          </div>
-          <div className="mt-1">
-            <p className="text-[10px] text-slate-400 font-black leading-none uppercase tracking-[0.3em]">
-              Guardians
-            </p>
-          </div>
+      <div className="flex flex-col justify-center">
+        <div className="flex items-center text-xl font-black leading-none tracking-tighter italic whitespace-nowrap">
+          <span className="text-slate-900">Titan</span>
+          <span className="text-indigo-600 ml-1">clean</span>
         </div>
-      )}
+      </div>
     </div>
   )
 }
