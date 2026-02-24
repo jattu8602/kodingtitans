@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Logo from '@/components/Logo'
+import AIInsightsStrip from '@/components/AIInsightsStrip'
 
 export default function MunicipalDashboard() {
   const reports = [
@@ -14,6 +15,7 @@ export default function MunicipalDashboard() {
 
   return (
     <>
+      <AIInsightsStrip role="municipal" />
       {/* Header Info (Previously in sidebar) */}
       <div className="mb-12">
         <h1 className="text-4xl font-black text-slate-900 tracking-tighter">Municipal Dashboard 🏛️</h1>

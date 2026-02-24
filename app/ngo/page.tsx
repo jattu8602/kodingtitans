@@ -3,10 +3,12 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Logo from '@/components/Logo'
+import AIInsightsStrip from '@/components/AIInsightsStrip'
 
 export default function NGODashboard() {
   return (
     <>
+      <AIInsightsStrip role="ngo" />
       {/* NGO Header Info */}
       <div className="mb-12">
         <h1 className="text-5xl font-black text-indigo-950 tracking-tighter uppercase italic">Impact Tower ♻️</h1>

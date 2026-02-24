@@ -6,6 +6,7 @@ import LottieAnimation from '@/components/LottieAnimation'
 import BentoCard from '@/components/BentoCard'
 import Link from 'next/link'
 import Logo from '@/components/Logo'
+import AIInsightsStrip from '@/components/AIInsightsStrip'
 import welcomeAnimation from '@/animations/welcome.json'
 import communityAnimation from '@/animations/community.json'
 import collaborationAnimation from '@/animations/collaboration.json'
@@ -20,6 +21,7 @@ export default function Home() {
       {/* Citizen Dashboard Overview */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
+          <AIInsightsStrip role="citizen" />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             {[
               { label: 'Your Points', value: '450', emoji: '💎', color: 'blue' },

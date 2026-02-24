@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import AIInsightsStrip from '@/components/AIInsightsStrip'
 
 export default function AdminDashboard() {
   const globalStats = [
@@ -12,6 +13,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="space-y-12">
+      <AIInsightsStrip role="admin" />
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-5xl font-black text-white tracking-widest uppercase italic">The Control Tower 🛰️</h1>
