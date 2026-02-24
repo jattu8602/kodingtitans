@@ -24,8 +24,8 @@ export default function NGOLayout({
     <div className="min-h-screen bg-white flex">
       {/* NGO Sidebar */}
       <aside className="w-72 bg-white text-slate-900 hidden md:flex flex-col p-8 sticky top-0 h-screen border-r border-indigo-100 shadow-xl shadow-indigo-100/50">
-        <Link href="/" className="mb-12 flex items-center justify-center py-4 bg-indigo-50/50 rounded-[2rem] border border-indigo-100 group hover:bg-indigo-100 transition-all">
-          <Logo />
+        <Link href="/" className="mb-12 flex items-center justify-start p-4 bg-indigo-50/50 rounded-2xl border border-indigo-100 group hover:bg-indigo-100 transition-all">
+          <Logo size={32} />
         </Link>
 
         <nav className="flex-1 space-y-2">

@@ -24,8 +24,8 @@ export default function MunicipalLayout({
     <div className="min-h-screen bg-slate-50 flex">
       {/* Municipal Sidebar */}
       <aside className="w-72 bg-slate-900 text-white hidden md:flex flex-col p-8 sticky top-0 h-screen shadow-2xl">
-        <Link href="/" className="mb-12 flex items-center gap-2 group">
-          <Logo />
+        <Link href="/" className="mb-12 flex items-center justify-start p-4 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-blue-50 transition-all">
+          <Logo size={32} />
           <div className="flex flex-col">
             <span className="text-xs font-black tracking-[0.3em] text-blue-400 group-hover:text-blue-300 transition-colors uppercase">Municipal</span>
             <span className="text-[8px] font-medium text-slate-500 uppercase tracking-widest">Authority Portal</span>
