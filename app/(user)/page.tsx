@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import LottieAnimation from '@/components/LottieAnimation'
 import BentoCard from '@/components/BentoCard'
+import Link from 'next/link'
+import Logo from '@/components/Logo'
 import welcomeAnimation from '@/animations/welcome.json'
 import communityAnimation from '@/animations/community.json'
 import collaborationAnimation from '@/animations/collaboration.json'
@@ -14,114 +16,232 @@ import fireAnimation from '@/animations/fire.json'
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-      {/* Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2"
-            >
-              <span className="text-2xl">🌱</span>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                TitanClean
-              </h1>
-            </motion.div>
-            <div className="hidden md:flex space-x-8">
-              {['Problem', 'Solution', 'Team', 'Tech', 'Plan'].map(
-                (item, i) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                  >
-                    {item}
-                  </motion.a>
-                )
-              )}
-            </div>
-            <motion.a
-              href="https://titanclean.in"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg hover:shadow-lg transition-all flex items-center gap-2"
-            >
-              Visit Site <span>🚀</span>
-            </motion.a>
-          </div>
-        </div>
-      </motion.nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-32 px-4 sm:px-6 lg:px-8">
+      {/* Citizen Dashboard Overview */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center lg:text-left"
-            >
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            {[
+              { label: 'Your Points', value: '450', emoji: '💎', color: 'blue' },
+              { label: 'Cleanup Rank', value: '#12', emoji: '🏆', color: 'green' },
+              { label: 'Active Reports', value: '3', emoji: '📝', color: 'orange' },
+              { label: 'CO₂ Saved', value: '12kg', emoji: '🌿', color: 'teal' }
+            ].map((stat, i) => (
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: 'spring' }}
-                className="inline-block mb-4"
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4"
               >
-                <span className="text-6xl">🗑️✨</span>
+                <span className="text-3xl">{stat.emoji}</span>
+                <div>
+                  <p className="text-gray-500 text-sm font-medium">{stat.label}</p>
+                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                </div>
               </motion.div>
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-green-600 to-blue-600 bg-clip-text text-transparent animate-gradient">
-                TitanClean
-              </h1>
-              <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
-                Citizen Waste Reporting & Cleanliness Reward App
-              </p>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
-                Guardians of City Cleanliness 🌍💚
-                <br />
-                Empowering citizens and authorities to enable timely cleanup and
-                responsible waste management based on real-world conditions
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <motion.a
-                  href="#solution"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
-                >
-                  Explore Solution <span>👉</span>
-                </motion.a>
-                <motion.a
-                  href="#problem"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
-                >
-                  Learn More <span>📚</span>
-                </motion.a>
+            ))}
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 space-y-6">
+              <div className="bg-white p-4 rounded-3xl shadow-lg border border-gray-100 overflow-hidden relative group">
+                <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
+                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-[10px] font-black animate-pulse uppercase tracking-widest">LIVE BHOPAL MAP</span>
+                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">STREET VIEW ENABLED</span>
+                </div>
+                <div className="bg-slate-200 h-[32rem] rounded-2xl relative overflow-hidden flex flex-col items-center justify-center">
+                  {/* Mock Bhopal Map Background: Lakes and Districts */}
+                  <div className="absolute inset-0 bg-[#e5e7eb]">
+                    {/* Upper Lake (Bada Talab) Simulation */}
+                    <div className="absolute top-[10%] left-[-10%] w-[60%] h-[50%] bg-blue-100 rounded-[40%_60%_70%_30%] blur-3xl opacity-60 rotate-12"></div>
+                    <div className="absolute top-[15%] left-[5%] w-[45%] h-[35%] bg-blue-200/50 rounded-[50%_40%_60%_50%] border-4 border-blue-50/20 shadow-inner"></div>
+
+                    {/* Lower Lake Simulation */}
+                    <div className="absolute top-[45%] left-[45%] w-[15%] h-[10%] bg-blue-200/40 rounded-full blur-xl"></div>
+
+                    {/* Greenery / Van Vihar */}
+                    <div className="absolute top-[20%] left-[2%] w-[15%] h-[30%] bg-green-100/40 rounded-full rotate-45 blur-2xl"></div>
+
+                    {/* Advanced Street Grid Pattern */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.4)_2px,_transparent_2px),_linear-gradient(90deg,rgba(255,255,255,0.4)_2px,_transparent_2px)] bg-[size:60px_60px]"></div>
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,_transparent_1px),_linear-gradient(90deg,rgba(0,0,0,0.02)_1px,_transparent_1px)] bg-[size:15px_15px]"></div>
+
+                    {/* Primary Roads Shading */}
+                    <div className="absolute top-1/2 left-0 w-full h-4 bg-white/40 -rotate-[15deg]"></div>
+                    <div className="absolute top-0 left-2/3 h-full w-4 bg-white/40 rotate-[10deg]"></div>
+                  </div>
+
+                  {/* Animated Kachragadi (Mini Truck) - Upgraded to Neon Pulse */}
+                  <motion.div
+                    animate={{
+                      x: [-200, 200, 200, -200, -200],
+                      y: [-100, -100, 100, 100, -100]
+                    }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    className="absolute z-20 flex flex-col items-center"
+                  >
+                    <div className="bg-blue-600/90 backdrop-blur px-3 py-1 rounded-full text-[8px] font-black text-white shadow-[0_0_15px_rgba(37,99,235,0.6)] mb-2 uppercase tracking-widest border border-white/20">Kachragadi-04</div>
+                    <span className="text-4xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]">🚚</span>
+                  </motion.div>
+
+                  {/* Diversified Marker Overlay */}
+                  <div className="absolute inset-0 p-8">
+                     {/* Public Toilets - Upgraded to Pin Style */}
+                     <div className="absolute top-[20%] left-[15%] group/marker cursor-help">
+                        <div className="bg-white p-2 rounded-2xl shadow-xl border-2 border-slate-900 group-hover/marker:scale-125 transition-all">
+                           <span className="text-xl block leading-none">🚻</span>
+                        </div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-slate-900 text-white text-[8px] font-black rounded-lg opacity-0 group-hover/marker:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest">MP Nagar Toilet</div>
+                     </div>
+
+                     <div className="absolute bottom-[30%] right-[20%] group/marker cursor-help">
+                        <div className="bg-white p-2 rounded-2xl shadow-xl border-2 border-slate-900 group-hover/marker:scale-125 transition-all">
+                           <span className="text-xl block leading-none">🚻</span>
+                        </div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-slate-900 text-white text-[8px] font-black rounded-lg opacity-0 group-hover/marker:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest">Van Vihar Public-A</div>
+                     </div>
+
+                     {/* Dead Animal Hazards - Upgraded to Shield Style */}
+                     <motion.div
+                       animate={{
+                         opacity: [0.7, 1, 0.7],
+                         scale: [1, 1.05, 1]
+                       }}
+                       transition={{ repeat: Infinity, duration: 2 }}
+                       className="absolute top-[40%] right-[35%] group/marker cursor-help z-10"
+                     >
+                        <div className="bg-red-600 p-2.5 rounded-[1rem] shadow-[0_0_20px_rgba(220,38,38,0.4)] border-2 border-white group-hover/marker:scale-110 transition-all">
+                           <span className="text-xl block leading-none saturate-150 brightness-125">🛡️</span>
+                        </div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-red-600 text-white text-[8px] font-black rounded-lg opacity-0 group-hover/marker:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest">CRITICAL: BIOHAZARD ALERT</div>
+                     </motion.div>
+
+                     {/* Bins Variety - Standardized Sizing */}
+                     <div className="absolute top-[10%] right-[15%] opacity-60 hover:opacity-100 transition-opacity hover:scale-110">
+                        <span className="text-2xl filter drop-shadow-md">🗑️</span>
+                     </div>
+                     <div className="absolute bottom-[15%] left-[40%] opacity-60 hover:opacity-100 transition-opacity hover:scale-110">
+                        <span className="text-2xl filter drop-shadow-md">🗑️</span>
+                     </div>
+
+                     {/* Big Bins - More Prominent Style */}
+                     <div className="absolute top-[60%] left-[10%] group/marker">
+                        <div className="bg-blue-100 p-2 rounded-2xl border-2 border-blue-200">
+                           <span className="text-3xl block">🧺</span>
+                        </div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-blue-600 text-white text-[8px] font-black rounded-lg opacity-0 group-hover/marker:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest font-black">Community Bin-02</div>
+                     </div>
+
+                     {/* Overflowed Bins - Glow Pulse Upgrade */}
+                     <motion.div
+                       animate={{
+                         boxShadow: ["0 0 0px rgba(239,68,68,0)", "0 0 20px rgba(239,68,68,0.6)", "0 0 0px rgba(239,68,68,0)"]
+                       }}
+                       transition={{ repeat: Infinity, duration: 1.5 }}
+                       className="absolute top-[30%] left-[60%] group/marker p-2 rounded-full cursor-help active:scale-95"
+                     >
+                        <span className="text-3xl relative">
+                           🗑️
+                           <span className="absolute -top-1 -right-1 flex h-4 w-4">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 shadow-lg shadow-red-500/50 border border-white"></span>
+                           </span>
+                        </span>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-red-600 text-white text-[8px] font-black rounded-lg opacity-0 group-hover/marker:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest">URGENT: BIN OVERFLOW</div>
+                     </motion.div>
+
+                     {/* Big Bin Overflowed - Max Critical Style */}
+                     <motion.div
+                       animate={{ scale: [1, 1.05, 1] }}
+                       transition={{ repeat: Infinity, duration: 2 }}
+                       className="absolute bottom-[10%] right-[45%] group/marker cursor-help"
+                     >
+                        <div className="bg-white p-2 rounded-[1.5rem] shadow-2xl border-2 border-red-500">
+                           <span className="text-5xl relative">
+                              🧺
+                              <span className="absolute -top-2 -right-2 flex h-6 w-6">
+                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                 <span className="relative inline-flex rounded-full h-6 w-6 bg-red-600 border-4 border-white shadow-lg"></span>
+                              </span>
+                           </span>
+                        </div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-4 py-2 bg-red-600 text-white text-[10px] font-black rounded-xl opacity-0 group-hover/marker:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-[0.2em] shadow-2xl border border-white/20">SITE CRITICAL: BIG BIN OVERFLOW</div>
+                     </motion.div>
+                  </div>
+
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md p-4 rounded-3xl shadow-2xl border border-white flex gap-6 items-center">
+                     <div className="flex flex-col items-center">
+                        <span className="text-xs font-black text-slate-400 uppercase tracking-tighter mb-1">Station</span>
+                        <span className="text-lg font-bold text-slate-900">Indore Rd.</span>
+                     </div>
+                     <div className="h-8 w-px bg-slate-200"></div>
+                     <div className="flex flex-col items-center">
+                        <span className="text-xs font-black text-slate-400 uppercase tracking-tighter mb-1">Air Quality</span>
+                        <span className="text-lg font-bold text-green-600">Good (42)</span>
+                     </div>
+                     <button className="bg-slate-900 text-white px-6 py-2 rounded-2xl font-black text-xs hover:bg-blue-600 transition-all">
+                        STREET VIEW
+                     </button>
+                  </div>
+                </div>
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="hidden lg:block"
-            >
-              <LottieAnimation
-                animationData={welcomeAnimation}
-                className="w-full h-96"
-              />
-            </motion.div>
+
+              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-xl font-bold flex items-center gap-2"><span>📂</span> Recent Activity</h3>
+                  <Link href="/report" className="text-blue-600 text-sm font-semibold hover:underline">View All</Link>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    { title: 'Overflowing Bin Reported', time: '2h ago', status: 'Pending', color: 'orange' },
+                    { title: 'Scrap Metal Listing Created', time: '5h ago', status: 'Active', color: 'blue' },
+                    { title: 'Garbage Pile Cleaned', time: 'Yesterday', status: 'Resolved', color: 'green' }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors">
+                      <div className={`w-2 h-2 rounded-full bg-${item.color}-500`}></div>
+                      <div className="flex-1">
+                        <p className="font-semibold text-gray-800">{item.title}</p>
+                        <p className="text-xs text-gray-500">{item.time}</p>
+                      </div>
+                      <span className={`text-xs font-bold text-${item.color}-600 bg-${item.color}-50 px-2 py-1 rounded`}>{item.status}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-8 rounded-3xl text-white shadow-xl">
+                <h3 className="text-2xl font-bold mb-4">Daily Goal 🎯</h3>
+                <p className="opacity-90 mb-6 text-sm">Report 2 waste issues today to earn a "City Hero" badge!</p>
+                <div className="bg-white/20 h-3 rounded-full overflow-hidden mb-2">
+                  <motion.div initial={{ width: 0 }} animate={{ width: '50%' }} className="bg-white h-full"></motion.div>
+                </div>
+                <p className="text-right text-xs font-bold italic">1/2 Reports Done</p>
+                <Link href="/report" className="mt-6 block w-full py-3 bg-white text-blue-600 rounded-xl font-bold text-center hover:bg-blue-50 transition-colors">
+                  Submit Report Now
+                </Link>
+              </div>
+
+              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2"><span>💎</span> Top Earners</h3>
+                <div className="space-y-4">
+                  {[
+                    { name: 'Anjali S.', pts: '4.2k', emoji: '🥇' },
+                    { name: 'Rahul V.', pts: '3.8k', emoji: '🥈' },
+                    { name: 'Priya D.', pts: '3.4k', emoji: '🥉' }
+                  ].map((u, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <span className="text-xl">{u.emoji}</span>
+                      <span className="flex-1 font-medium text-gray-800">{u.name}</span>
+                      <span className="font-bold text-blue-600">{u.pts}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link href="/leaderboard" className="mt-6 block text-center text-sm font-bold text-gray-400 hover:text-blue-600 transition-colors">FULL LEADERBOARD</Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -791,9 +911,9 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent flex items-center justify-center gap-2">
-              <span>🌱</span> TitanClean
-            </h3>
+            <div className="flex justify-center mb-6">
+              <Logo full size={60} />
+            </div>
             <p className="text-gray-400 mb-4 flex items-center justify-center gap-2">
               <span>🏙️</span> Smart City | Civic Technology | Environmental
               Management
