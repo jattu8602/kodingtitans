@@ -13,7 +13,7 @@ export default function Logo({ className = '', full = false, size = 40 }: LogoPr
     <div className={`flex items-center gap-3 ${className}`}>
       <div className="relative group transition-transform duration-500 hover:scale-110" style={{ width: size, height: size }}>
         <Image
-          src="/logo.png"
+          src="/icon.png"
           alt="TitanClean"
           fill
           className="object-contain"

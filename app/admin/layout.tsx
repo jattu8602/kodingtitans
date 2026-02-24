@@ -24,9 +24,9 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen bg-slate-900 flex">
       {/* Superadmin Sidebar */}
-      <aside className="w-72 bg-slate-950 text-white hidden md:flex flex-col p-8 sticky top-0 h-screen shadow-2xl border-r border-white/5">
-        <Link href="/" className="mb-12 flex items-center justify-start p-4 bg-white/5 rounded-2xl border border-white/5 group hover:bg-red-950/20 transition-all">
-          <Logo size={32} />
+      <aside className="w-72 bg-slate-800 text-white hidden md:flex flex-col p-8 sticky top-0 h-screen shadow-2xl border-r border-white/5">
+        <Link href="/" className="mb-12 flex items-center justify-center py-4 bg-white/5 rounded-[2rem] border border-white/5 group hover:bg-red-950/20 transition-all">
+          <Logo />
         </Link>
 
         <nav className="flex-1 space-y-2">

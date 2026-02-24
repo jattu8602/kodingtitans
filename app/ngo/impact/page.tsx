@@ -43,19 +43,44 @@ export default function NGOImpact() {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 bg-white p-10 rounded-[4rem] shadow-2xl border border-indigo-50 overflow-hidden relative group">
-           <h3 className="text-lg font-black text-indigo-950 uppercase tracking-widest mb-10">Monthly Diversion Trend</h3>
-           <div className="h-80 w-full bg-slate-50/50 rounded-[2.5rem] relative flex items-end justify-between px-12 py-8 group-hover:bg-white transition-all duration-700">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.05),transparent)]"></div>
-              {[30, 45, 35, 60, 50, 75, 90].map((h, i) => (
-                <div key={i} className="flex flex-col items-center gap-2 group/bar">
-                   <motion.div
-                     initial={{ height: 0 }}
-                     animate={{ height: `${h}%` }}
-                     transition={{ delay: 0.5 + (i * 0.1), duration: 1 }}
-                     className="w-10 bg-indigo-600 rounded-t-xl opacity-80 group-hover/bar:opacity-100 group-hover/bar:scale-x-110 transition-all"
-                   />
-                   <span className="text-[10px] font-black text-slate-300 uppercase">W{i+1}</span>
+        <div className="lg:col-span-2 bg-white p-12 rounded-[4rem] shadow-2xl shadow-indigo-100/50 border border-indigo-50 overflow-hidden relative group">
+           <div className="flex justify-between items-center mb-10">
+              <h3 className="text-xl font-black text-indigo-950 uppercase tracking-widest">Monthly Diversion Trend</h3>
+              <div className="flex items-center gap-2">
+                 <span className="w-3 h-3 bg-indigo-600 rounded-full"></span>
+                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Metric: Tons</span>
+              </div>
+           </div>
+           <div className="h-80 w-full bg-indigo-50/30 rounded-[3rem] relative flex items-end justify-between px-10 py-10 group-hover:bg-indigo-50/50 transition-all duration-700 border border-indigo-100/50">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.08),transparent)]"></div>
+
+              {/* Grid Lines */}
+              <div className="absolute inset-x-0 bottom-10 px-10 flex flex-col justify-between h-[calc(100%-5rem)] pointer-events-none">
+                 {[1, 2, 3, 4].map((_, i) => (
+                    <div key={i} className="w-full h-px bg-indigo-200/30 border-t border-dashed border-indigo-200/50"></div>
+                 ))}
+              </div>
+
+              {[30, 45, 35, 60, 50, 75, 95].map((h, i) => (
+                <div key={i} className="flex flex-col items-center gap-4 group/bar z-10">
+                   <div className="relative w-12 flex items-end justify-center h-48">
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: `${h}%`, opacity: 1 }}
+                        transition={{
+                           delay: 0.2 + (i * 0.1),
+                           duration: 1.2,
+                           type: "spring",
+                           bounce: 0.4
+                        }}
+                        className="w-full bg-gradient-to-t from-indigo-700 to-indigo-500 rounded-2xl shadow-lg shadow-indigo-200 group-hover/bar:from-indigo-600 group-hover/bar:to-blue-400 transition-all cursor-pointer relative"
+                      >
+                         <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-indigo-950 text-white text-[8px] font-black px-2 py-1 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap">
+                            {h} TONS
+                         </div>
+                      </motion.div>
+                   </div>
+                   <span className="text-[10px] font-black text-indigo-400 group-hover/bar:text-indigo-950 transition-colors uppercase tracking-tighter">Week {i+1}</span>
                 </div>
               ))}
            </div>
