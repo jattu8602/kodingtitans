@@ -65,8 +65,19 @@ export default function AdminLayout({
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.05),transparent)]">
-        {/* Top Header */}
-        <header className="h-20 bg-slate-950/50 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-8 sticky top-0 z-50">
+        {/* Mobile Top Header */}
+        <header className="h-16 bg-slate-950/90 backdrop-blur-xl border-b border-white/5 flex md:hidden items-center justify-between px-6 sticky top-0 z-[60]">
+           <Link href="/" className="hover:opacity-80 transition-opacity">
+             <Logo size={28} />
+           </Link>
+           <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+              <span className="text-[9px] font-black text-red-500 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">ROOT</span>
+           </div>
+        </header>
+
+        {/* Desktop Top Header (Hidden on Mobile) */}
+        <header className="h-20 bg-slate-950/50 backdrop-blur-xl border-b border-white/5 hidden md:flex items-center justify-between px-8 sticky top-0 z-50">
            <div className="flex items-center gap-4">
               <h2 className="text-lg font-black text-white uppercase tracking-[0.4em] italic">System Overview</h2>
            </div>
@@ -83,9 +94,43 @@ export default function AdminLayout({
            </div>
         </header>
 
-        <main className="p-10 text-slate-300">
+        <main className="p-6 md:p-10 text-slate-300 pb-32 md:pb-10">
            {children}
         </main>
+      </div>
+
+      {/* Admin Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] z-[100]">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="bg-slate-950/95 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-[2rem] flex items-center justify-between shadow-2xl shadow-red-950/40"
+        >
+          {navItems.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link key={item.href} href={item.href} className="relative">
+                <motion.div
+                  whileTap={{ scale: 0.8 }}
+                  className={`flex flex-col items-center gap-1 transition-all duration-300 ${
+                    isActive ? 'text-red-500' : 'text-slate-600'
+                  }`}
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span className="text-[7px] font-black uppercase tracking-tighter">
+                    {item.label.split(' ')[0]}
+                  </span>
+                </motion.div>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeIndicatorAdmin"
+                    className="absolute -top-6 left-1/2 -translate-x-1/2 w-8 h-1 bg-red-500 rounded-full"
+                  />
+                )}
+              </Link>
+            )
+          })}
+        </motion.div>
       </div>
     </div>
   )

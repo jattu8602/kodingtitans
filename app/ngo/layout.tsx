@@ -64,8 +64,16 @@ export default function NGOLayout({
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Top Header */}
-        <header className="h-20 bg-white/80 backdrop-blur-md border-b border-indigo-100 flex items-center justify-between px-8 sticky top-0 z-50">
+        {/* Mobile Top Header */}
+        <header className="h-16 bg-white/90 backdrop-blur-xl border-b border-indigo-100 flex md:hidden items-center justify-between px-6 sticky top-0 z-[60]">
+           <Link href="/" className="hover:opacity-80 transition-opacity">
+             <Logo size={28} />
+           </Link>
+           <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">NGO HUB</span>
+        </header>
+
+        {/* Desktop Top Header (Hidden on Mobile) */}
+        <header className="h-20 bg-white/80 backdrop-blur-md border-b border-indigo-100 hidden md:flex items-center justify-between px-8 sticky top-0 z-50">
            <div className="flex items-center gap-4">
               <h2 className="text-lg font-black text-indigo-950 uppercase tracking-widest">Mission Hub</h2>
            </div>
@@ -79,9 +87,43 @@ export default function NGOLayout({
            </div>
         </header>
 
-        <main className="p-8">
+        <main className="p-8 pb-32 md:pb-8">
            {children}
         </main>
+      </div>
+
+      {/* NGO Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] z-[100]">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="bg-indigo-950/95 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-[2rem] flex items-center justify-between shadow-2xl shadow-indigo-900/40"
+        >
+          {navItems.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link key={item.href} href={item.href} className="relative">
+                <motion.div
+                  whileTap={{ scale: 0.8 }}
+                  className={`flex flex-col items-center gap-1 transition-all duration-300 ${
+                    isActive ? 'text-indigo-400' : 'text-indigo-200/50'
+                  }`}
+                >
+                  <span className="text-xl">{item.icon}</span>
+                  <span className="text-[8px] font-black uppercase tracking-tighter">
+                    {item.label.split(' ')[0]}
+                  </span>
+                </motion.div>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeIndicatorNGO"
+                    className="absolute -top-6 left-1/2 -translate-x-1/2 w-8 h-1 bg-indigo-400 rounded-full"
+                  />
+                )}
+              </Link>
+            )
+          })}
+        </motion.div>
       </div>
     </div>
   )

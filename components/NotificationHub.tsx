@@ -49,7 +49,7 @@ export default function NotificationHub() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-8 w-16 h-16 bg-slate-900 text-white rounded-full shadow-2xl z-[100] flex items-center justify-center group border border-white/10"
+        className="fixed bottom-28 md:bottom-8 right-6 md:right-8 w-14 h-14 md:w-16 md:h-16 bg-slate-900 text-white rounded-full shadow-2xl z-[100] flex items-center justify-center group border border-white/10"
       >
         <span className="text-2xl group-hover:rotate-12 transition-transform">🔔</span>
         <div className="absolute top-0 right-0 w-5 h-5 bg-red-500 rounded-full border-2 border-slate-900 flex items-center justify-center text-[10px] font-black">

@@ -55,11 +55,11 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] z-[100]">
+      <div className="md:hidden fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] z-[100]">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="bg-slate-900/95 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-[2.5rem] flex items-center justify-between shadow-2xl"
+          className="bg-slate-900/95 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-[2rem] flex items-center justify-between shadow-2xl"
         >
           {navItems.map((item) => {
             const isActive = pathname === item.href
@@ -71,15 +71,15 @@ export default function Navbar() {
                     isActive ? 'text-blue-400' : 'text-slate-500'
                   }`}
                 >
-                  <span className="text-xl">{item.icon}</span>
-                  <span className="text-[8px] font-black uppercase tracking-tighter">
+                  <span className="text-lg">{item.icon}</span>
+                  <span className="text-[7px] font-black uppercase tracking-tighter">
                     {item.label}
                   </span>
                 </motion.div>
                 {isActive && (
                   <motion.div
                     layoutId="activeIndicator"
-                    className="absolute -top-6 left-1/2 -translate-x-1/2 w-8 h-1 bg-blue-400 rounded-full"
+                    className="absolute -top-5 left-1/2 -translate-x-1/2 w-8 h-1 bg-blue-400 rounded-full"
                   />
                 )}
               </Link>

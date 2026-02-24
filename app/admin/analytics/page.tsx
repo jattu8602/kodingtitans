@@ -32,15 +32,15 @@ export default function AdminAnalytics() {
   }
 
   return (
-    <div className="space-y-12 bg-slate-950 -m-6 p-12 min-h-screen">
+    <div className="space-y-8 md:space-y-12 bg-slate-950 -m-6 p-6 md:p-12 min-h-screen">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-5xl font-black text-white tracking-widest uppercase italic underline decoration-red-600 decoration-[12px] underline-offset-8">Data Signal Hub 📊</h1>
-          <p className="text-slate-500 font-bold text-[10px] uppercase tracking-[0.4em] mt-3">Platform-Wide Intelligence & Predictive Analytics</p>
+          <h1 className="text-3xl md:text-5xl font-black text-white tracking-widest uppercase italic underline decoration-red-600 decoration-8 md:decoration-[12px] underline-offset-8">Data Signal Hub 📊</h1>
+          <p className="text-slate-500 font-bold text-[8px] md:text-[10px] uppercase tracking-[0.4em] mt-3 sm:mt-4">Platform-Wide Intelligence & Predictive Analytics</p>
         </div>
         <button
           onClick={handleAudit}
-          className="bg-white text-slate-950 px-10 py-4 rounded-[1.5rem] font-black text-xs hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 transition-all flex items-center gap-2 uppercase tracking-widest"
+          className="bg-white text-slate-950 px-8 md:px-10 py-3 md:py-4 rounded-[1.2rem] md:rounded-[1.5rem] font-black text-[10px] md:text-xs hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 transition-all flex items-center gap-2 uppercase tracking-widest w-fit"
         >
            <span>🖨️</span> Export Full Audit
         </button>

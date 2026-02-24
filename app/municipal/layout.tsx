@@ -65,12 +65,15 @@ export default function MunicipalLayout({
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top Header */}
-        <header className="h-20 bg-white border-b border-slate-100 flex items-center justify-between px-8 sticky top-0 z-50">
+        <header className="h-20 bg-white/90 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-6 md:px-8 sticky top-0 z-50">
            <div className="flex items-center gap-4">
-              <div className="md:hidden">
-                 <Logo size={24} />
+              <div className="md:hidden flex items-center gap-3">
+                 <Link href="/">
+                    <Logo size={28} />
+                 </Link>
+                 <span className="text-[9px] font-black text-blue-600 bg-blue-50 px-2 py-1 rounded-md border border-blue-100 uppercase tracking-widest">MUNI</span>
               </div>
-              <h2 className="text-sm font-black text-slate-400 uppercase tracking-[0.4em] italic">Operational Hub</h2>
+              <h2 className="text-[10px] md:text-sm font-black text-slate-400 uppercase tracking-[0.4em] italic hidden sm:block">Operational Hub</h2>
            </div>
            <div className="flex items-center gap-6">
               <div className="hidden lg:flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-xl">
@@ -83,9 +86,43 @@ export default function MunicipalLayout({
            </div>
         </header>
 
-        <main className="p-8">
+        <main className="p-6 md:p-8 pb-32 md:pb-8">
            {children}
         </main>
+      </div>
+
+      {/* Municipal Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] z-[100]">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="bg-slate-900/95 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-[2rem] flex items-center justify-between shadow-2xl shadow-slate-950/40"
+        >
+          {navItems.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link key={item.href} href={item.href} className="relative">
+                <motion.div
+                  whileTap={{ scale: 0.8 }}
+                  className={`flex flex-col items-center gap-1 transition-all duration-300 ${
+                    isActive ? 'text-blue-400' : 'text-slate-500'
+                  }`}
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span className="text-[7px] font-black uppercase tracking-tighter">
+                    {item.label}
+                  </span>
+                </motion.div>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeIndicatorMuni"
+                    className="absolute -top-5 left-1/2 -translate-x-1/2 w-8 h-1 bg-blue-400 rounded-full"
+                  />
+                )}
+              </Link>
+            )
+          })}
+        </motion.div>
       </div>
     </div>
   )
