@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import PageLoader from '@/components/PageLoader'
 import NotificationHub from '@/components/NotificationHub'
+import { ToastProvider } from '@/components/Toast'
 
 // Using system fonts as fallback to avoid network issues during build
 const geistSans = {
@@ -62,8 +63,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PageLoader>{children}</PageLoader>
-        <NotificationHub />
+        <ToastProvider>
+          <PageLoader>{children}</PageLoader>
+          <NotificationHub />
+        </ToastProvider>
       </body>
     </html>
   )
